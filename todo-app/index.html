@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <h1>To-do list app</h1>
+        <h2>Start palnning now!</h2>
+        <input id="filter-todos" type="text" placeholder="Filter todos">
+        <label>
+            <input type="checkbox" id="hide-completed"> Hide completed
+        </label>
+        <div id="todo-list"></div>
+        <form id="adding-form">
+            <input type="text" name="itemName" placeholder="Type item to add">
+            <button>Add</button>
+        </form>
+
+        <script src="https://unpkg.com/uuid@latest/dist/umd/uuidv4.min.js"></script>
+        <script src="todo-functions.js"></script>
+        <script src="todo-app.js"></script>
+    </body>
+</html>
