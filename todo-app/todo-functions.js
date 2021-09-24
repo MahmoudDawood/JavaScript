@@ -1,23 +1,23 @@
+'use strict'
+
 //Fetch existing todos from local storage
-const getSavedTodos = function(){
+const getSavedTodos =() => {
     const todosJSON = localStorage.getItem('todos')
-    if(todosJSON !== null) {
-        return JSON.parse(todosJSON)
-    } else{
+    try{
+        return todosJSON ? JSON.parse(todosJSON) : []
+    } catch(e){
         return []
     }
 }
 
 //Save todos to local storage
-const saveTodos = function(list){
+const saveTodos = (list) => {
     localStorage.setItem('todos',JSON.stringify(list))
 }
 
 //Delete todo by id
-const deleteTodo  = function(id){
-    const idx = todos.findIndex(function(item){
-        return item.id === id
-    })
+const deleteTodo  = (id) => {
+    const idx = todos.findIndex((item) => item.id === id)
     if(idx > -1){
         todos.splice(idx, 1)
     }
@@ -26,11 +26,9 @@ const deleteTodo  = function(id){
 }
 
 //Toggle todo
-const toggleTodo = function(id){
-    const result = todos.find(function(item){
-        return item.id === id
-    })
-    if(result !== undefined){
+const toggleTodo = (id) => {
+    const result = todos.find((item) => item.id === id)
+    if(result){
         result.completed = !result.completed
     }
     saveTodos(todos)
@@ -38,7 +36,7 @@ const toggleTodo = function(id){
 }
 
 //Get the DOM elements for an individual notes
-const generateTodoDOM = function(item){
+const generateTodoDOM = (item) => {
     const itemBlock = document.createElement('div')
     const checkItem = document.createElement('input')
     const todoText = document.createElement('a')
@@ -48,9 +46,7 @@ const generateTodoDOM = function(item){
     checkItem.setAttribute('type', 'checkbox')
     checkItem.checked = item.completed
     itemBlock.appendChild(checkItem)
-    checkItem.addEventListener('change', function(){
-        toggleTodo(item.id)
-    })
+    checkItem.addEventListener('change', () => toggleTodo(item.id))
 
     //Setting todo text
     itemBlock.appendChild(todoText)
@@ -72,17 +68,15 @@ const generateTodoDOM = function(item){
 }
 
 //Get the DOM elemets for list summary
-const generateSummaryDOM = function(list){
-    const completedTasks = list.filter(function(item){  
-        return !item.completed
-    })
+const generateSummaryDOM = (list) => {
+    const completedTasks = list.filter((item) => !item.completed)
     const leftTodos = document.createElement('h2') //create
     leftTodos.textContent = `You have ${completedTasks.length} todos left.` //modify
     return leftTodos
 }
 
 //Render application todos based on filter
-const renderTodos = function(list, filters){
+const renderTodos = (list, filters) =>{
     const filteredList = list.filter(function(item){
         const searchResult = item.text.toLowerCase().includes(filters.searchText.toLowerCase())
         const hideCompletedResult =  !filters.hideCompleted || !item.completed

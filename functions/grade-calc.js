@@ -1,4 +1,7 @@
 let gradeCalculator = function(score, max){
+    if(typeof score !== 'number' || typeof max !== 'number'){
+        throw Error('Not a number')
+    }
     let percent = (score / max) * 100
     let grade
     if (percent >= 90) {
@@ -14,6 +17,9 @@ let gradeCalculator = function(score, max){
     }
     return (`You got a ${grade} (%${percent})`)
 }
-
-let result = gradeCalculator(9, 20)
-console.log(result)
+try{
+    let result = gradeCalculator(false, 20)
+    console.log(result)
+} catch(e){
+    console.log('Woooof thanks god catched it!')
+}

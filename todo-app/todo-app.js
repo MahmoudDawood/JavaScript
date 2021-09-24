@@ -1,3 +1,5 @@
+'use strict'
+
 let todos = getSavedTodos() // text, completed
 
 const filters = {
@@ -25,7 +27,9 @@ document.querySelector('#adding-form').addEventListener('submit', function (e) {
         text: e.target.elements.itemName.value,
         completed: false,
     })
+    e.target.itemName.value = ''
     saveTodos(todos)
+    renderTodos(todos, filters)
 
-    location.assign(`/edit.html#${id}`)
+    // location.assign(`/edit.html#${id}`)
 })
