@@ -19,12 +19,16 @@ document.querySelector('#hide-completed').addEventListener('change', function (e
     renderTodos(todos, filters)
 })
 
-document.querySelector('#adding-form').addEventListener('submit', function (e) {
+document.querySelector('#new-todo').addEventListener('submit', function (e) {
     const id = uuidv4()
     e.preventDefault()
+    const text = e.target.elements.itemName.value.trim()
+    if(text.length < 1){
+        return
+    }
     todos.push({
         id: id,
-        text: e.target.elements.itemName.value,
+        text,
         completed: false,
     })
     e.target.itemName.value = ''
