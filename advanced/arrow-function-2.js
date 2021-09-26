@@ -1,1 +1,0 @@
-const show = () => console.log('great')
