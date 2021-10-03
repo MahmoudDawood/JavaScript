@@ -9,7 +9,7 @@ const getPuzzle = async (wordCount) => {
 }
 
 const getCountry = async (countryCode) => {
-    const response = fetch('//restcountries.eu/rest/v2/all?access_key=05faf6e6fec8b84097753775de246913')
+    const response = fetch('//restcountries.eu/v2/all?access_key=05faf6e6fec8b84097753775de246913')
     if(response.status === 200){
         const data = await response.json()
         return data.find((country) => country.alpha2Code === countryCode)
@@ -31,3 +31,5 @@ const getLocation = async () => {
         throw new Error('Unable to get location')
     }
 }
+
+export {getPuzzle as default}

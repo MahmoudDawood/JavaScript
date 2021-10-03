@@ -2,10 +2,10 @@
 
 let todos = getSavedTodos() // text, completed
 
-const filters = {
-    searchText: '',
-    hideCompleted: false,
-}
+// const filters = {
+//     searchText: '',
+//     hideCompleted: false,
+// }
 
 renderTodos(todos, filters)
 

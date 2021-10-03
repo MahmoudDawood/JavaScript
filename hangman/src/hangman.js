@@ -13,12 +13,12 @@ class Hangman {
     
         guess = guess.toLowerCase()
         if(this.guessedLetters.includes(guess)){
-            null
+            return
         } else if(this.word.includes(guess)){
             this.guessedLetters.push(guess)
         } else{
             this.guesses --
-            this.guessedLetters.push(guess)
+            this.guessedLetters = [...this.guessedLetters, guess]
         }
         this.puzzleState()
     }
@@ -59,3 +59,4 @@ class Hangman {
     }
 }
 
+export {Hangman as default}

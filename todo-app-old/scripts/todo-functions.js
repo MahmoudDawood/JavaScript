@@ -1,39 +1,39 @@
 'use strict'
 
 //Fetch existing todos from local storage
-const getSavedTodos =() => {
-    const todosJSON = localStorage.getItem('todos')
-    try{
-        return todosJSON ? JSON.parse(todosJSON) : []
-    } catch(e){
-        return []
-    }
-}
+// const getSavedTodos =() => {
+//     const todosJSON = localStorage.getItem('todos')
+//     try{
+//         return todosJSON ? JSON.parse(todosJSON) : []
+//     } catch(e){
+//         return []
+//     }
+// }
 
 //Save todos to local storage
-const saveTodos = (list) => {
-    localStorage.setItem('todos',JSON.stringify(list))
-}
+// const saveTodos = (list) => {
+//     localStorage.setItem('todos',JSON.stringify(list))
+// }
 
 //Delete todo by id
-const deleteTodo  = (id) => {
-    const idx = todos.findIndex((item) => item.id === id)
-    if(idx > -1){
-        todos.splice(idx, 1)
-    }
-    saveTodos(todos)
-    renderTodos(todos, filters)
-}
+// const deleteTodo  = (id) => {
+//     const idx = todos.findIndex((item) => item.id === id)
+//     if(idx > -1){
+//         todos.splice(idx, 1)
+//     }
+//     saveTodos(todos)
+//     renderTodos(todos, filters)
+// }
 
-//Toggle todo
-const toggleTodo = (id) => {
-    const result = todos.find((item) => item.id === id)
-    if(result){
-        result.completed = !result.completed
-    }
-    saveTodos(todos)
-    renderTodos(todos, filters)
-}
+// //Toggle todo
+// const toggleTodo = (id) => {
+//     const result = todos.find((item) => item.id === id)
+//     if(result){
+//         result.completed = !result.completed
+//     }
+//     saveTodos(todos)
+//     renderTodos(todos, filters)
+// }
 
 //Get the DOM elements for an individual notes
 const generateTodoDOM = (item) => {
